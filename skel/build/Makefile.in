@@ -89,7 +89,7 @@ modules-install:
 	@echo "Installing 'ufo'"
 	$(CP)    modules/ufo/ufo     $(DESTDIR)$(PARROT_BIN_DIR)/ufo
 	$(CHMOD) 755                 $(DESTDIR)$(PARROT_BIN_DIR)/ufo
-	$(PERL) build/module-install.pl $(DESTDIR)$(PARROT_BIN_DIR)/$(PERL6_EXE) $(DESTDIR)$(PERL6_LANG_DIR)/lib $(MODULES)
+	PERL6LIB=$(DESTDIR)$(PERL6_LANG_DIR)/lib $(PERL) build/module-install.pl $(DESTDIR)$(PARROT_BIN_DIR)/$(PERL6_EXE) $(DESTDIR)$(PERL6_LANG_DIR)/lib $(MODULES)
 
 blizkost:
 	cd modules/blizkost && $(PERL) Configure.pl --parrot-config=$(PARROT_CONFIG) && $(MAKE)
